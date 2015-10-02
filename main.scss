@@ -2,7 +2,7 @@ $fontColor:#424046;
 
 
 .container{
-	width: 200px;
+	width: 800px;
   height: 300px;
 }
 
@@ -10,3 +10,7 @@ nav{
 	font-size: 30px;
 	color: $fontColor;
 }
+
+.container .banner .pic img {
+    width: 50%;
+    height: auto;
