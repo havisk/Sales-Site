@@ -1,19 +1,26 @@
 (function () {
+  //create paragraph 
+  function addParagraph(selector, text) {
+      var container = document.querySelector(selector);
+      var p = document.createElement('p');
+      var node = document.createTextNode(text);
+      p.appendChild(node);
+      container.appendChild(p);
+    };
+    // creates list
+  function addList(selector, list) {
+   var container = document.querySelector(selector);
+   var ul = document.createElement('ul');
+   list.forEach(function(item){
+     var li = document.createElement('li');
+     var node = document.createTextNode(item);
 
- //  function addList(selector, list) {
- //    var container = document.querySelector('#answer');
- //    var ul = document.createElement('ul');
+     li.appendChild(node);
+     ul.appendChild(li);
+   });
 
- //   list.forEach(function(name){
- //     var li = document.createElement('li');
- //     var textNode = document.createTextNode(name);
-
- //     li.appendChild(textNode);
- //     ul.appendChild(li);
- //   });
-
- //   container.appendChild(ul);
- // };
+   container.appendChild(ul);
+ };
 
 //QUESTION 1
   // Create an array of just the prices
@@ -61,31 +68,9 @@
       
       var y = cost.map(function(x){
         return x.title;
-      })
-
-      console.log(y);
-
-
-        var item = y.forEach(function(name){
-
-      //create unordered list
-      var ul = document.createElement('ul');
-
-      // Find our answer element
-
-        var answer2 = document.querySelector('#answer2');
-        // Create a node from our above answer ready for the DOM
-        var textNode = document.createTextNode(name);
-        //create list element
-        var li = document.createElement('li');
-        // Append newly created node to our answer element
-        
-        li.appendChild(textNode);
-        ul.appendChild(li);
-
-        console.log(name);
-        answer2.appendChild(ul);
       });
+
+      addList('#answer2', y);
 
 
 //QUESTION 3
@@ -113,25 +98,10 @@
        console.log(j);
 
     //forming sentence from variables
-       var beer = name + ' cost '+ '£'  + amount;
+       var beer = name + ' cost '+ '\u00A3'  + amount;
        console.log(beer);
 
-    //create unordered list
-      var ul = document.createElement('ul');
-
-      // Find our answer element
-        var answer3 = document.querySelector('#answer3');
-
-     // Create a node from our above answer ready for the DOM
-        var textNode = document.createTextNode(beer);
-
-    //create list element
-        var li = document.createElement('li');
-
-    // Append newly created node to our answer element 
-        li.appendChild(textNode);
-        ul.appendChild(li);
-        answer3.appendChild(ul);
+       addParagraph('#answer3', beer);
   
  
 //QUESTION 4
@@ -148,26 +118,7 @@
           return mater.title + ' is made of wood.';
         
       });
-
-      var material = woodMade.forEach(function(item){
-      //create unordered list
-      var ul = document.createElement('ul');
-
-      // Find our answer element
-
-        var answer4 = document.querySelector('#answer4');
-        // Create a node from our above answer ready for the DOM
-        var textNode = document.createTextNode(item);
-        //create list element
-        var li = document.createElement('li');
-        // Append newly created node to our answer element
-        
-        li.appendChild(textNode);
-        ul.appendChild(li);
-
-        console.log(name);
-        answer4.appendChild(ul);
-      });
+        addList('#answer4', woodMade);
       
 //QUESTION 5
  //Filter based on #of materials
@@ -175,36 +126,15 @@
       if ((k.materials.length) >= (8)){
         return k.materials;
       }
-        console.log(mult);
 
     });      
-      var names = mult.map(function(qty){
-        var type = qty.materials; 
+    
+      var multiMaterial = mult.forEach(function(item){
 
-        return qty.title +' has ' + qty.materials.length + ' materials:'
-        + type;
-
-      });
-
-      var multiMaterial = names.forEach(function(item){
-
-      //create unordered list
-      //create list element
-        var ul = document.createElement('ul');
-        var li= document.createElement('li');
-        
-      // Find our answer element
-      // Create a node from our above answer ready for the DOM
-        var answer5 = document.querySelector('#answer5');
-        var textNode = document.createTextNode(item);
-
-       // Append newly created node to our answer element
-         li.appendChild(textNode);
-          ul.appendChild(li);
-          answer5.appendChild(ul);
-          
-      });
-
+      addParagraph('#answer5', item.title +' has ' + item.materials.length + ' materials:');
+      addList('#answer5', item.materials);
+    
+    });
                
 //QUESTION 6
   // filter by self-made
@@ -218,19 +148,7 @@
   });
   var total = sum + " were made by their sellers";
 
-  //create unordered list
-      //create list element
-        var ul = document.createElement('ul');
-        var li= document.createElement('li');
-  // Find our answer element
-      // Create a node from our above answer ready for the DOM
-        var answer6 = document.querySelector('#answer6');
-        var textNode = document.createTextNode(total);
-
-       // Append newly created node to our answer element
-         li.appendChild(textNode);
-          ul.appendChild(li);
-          answer6.appendChild(ul);
+  addParagraph('#answer6', total);
 
   
   
